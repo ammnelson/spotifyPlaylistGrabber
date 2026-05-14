@@ -1,1 +1,4 @@
 .env
+.claude
+.token_cache.json
+*.txt
