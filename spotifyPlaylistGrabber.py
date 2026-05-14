@@ -154,8 +154,10 @@ def main():
     playlist_name = get_playlist_name(token, playlist_id)
     tracks = get_playlist_tracks(token, playlist_id)
 
-    safe_name = re.sub(r'[^\w\s-]', '', playlist_name).strip().replace(' ', '_')
-    filename = f"{safe_name}.txt"
+    counter = 1
+    while os.path.exists(f"playlist {counter}.txt"):
+        counter += 1
+    filename = f"playlist {counter}.txt"
 
     with open(filename, "w") as f:
         f.write(f"Playlist: {playlist_name}\n")
